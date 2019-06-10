@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css?family=Original+Surfer&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap');
+
+body {
+    font-family: 'Roboto Slab', serif;
+}
+
+header {
+    height: 47em;
+    padding: 10%;
+    background-image: linear-gradient(#B3E5FC, #0288D1)
+}
+
+.console {
+    border-radius: .3em;
+    width: 70%;
+    background-image: url('../img/console.png');
+    background-repeat: no-repeat;
+    background-size: 80em;
+    height: 25em;
+    margin: 0 auto;
+    padding: 3em .5em 0 0;
+}
+
+
+#intro-bg {
+    -webkit-filter: blur(.2em);
+    -moz-filter: blur(.2em);
+    -o-filter: blur(.2em);
+    -ms-filter: blur(.2em);
+    filter: blur(.25em);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transform: scale(1.1)
+}
+
+.intro {
+    display: inline-block;
+}
+
+.console div:nth-child(2) .typed-cursor,
+.console div:nth-child(3) .typed-cursor,
+.console div:nth-child(2) span:nth-child(1),
+.console div:nth-child(3) span:nth-child(1) {
+    display: none;
+}
+
+
+.name {
+    font-size: 18pt;
+    padding: 0 .5em;
+    color: #4CAF50;
+}
+
+.typed-cursor {
+    padding: .05em .4em;
+    margin-left: .2em;
+    background-color: white;
+}
+
+.intro h2 {
+    font-size: 18pt;
+    color: white;
+}
+
+.typed-cursor.typed-cursor--blink {
+    animation: typedjsBlink 1s infinite;
+}
+
+#arrow {
+    color: white;
+}
+
+#arrow {
+    animation: move-down 1.5s infinite;
+    display: block;
+    margin: 3em auto 0;
+}
+
+.navbar {
+    top: 0;
+    background-color: #BDBDBD;
+    height: 3.5em;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    box-shadow: 0 0.3em 0.5em rgba(0, 0, 0, .3)
+}
+
+.nav {
+    height: 100%;
+    width: 100%;
+}
+
+.nav ul {
+    padding: 0;
+    list-style: none;
+}
+
+.nav-links {
+    width: 70%;
+}
+
+.nav-links ul {
+    float: right;
+}
+
+.nav-links li {
+    display: inline-block;
+}
+
+.logo {
+    width: 22%;
+    display: inline-flex;
+}
+
+.logo h1 {
+    margin-left: 0;
+    margin-bottom: 0;
+    height: 100%;
+}
+
+#last-initial,
+#first-initial {
+    margin-left: 2%;
+}
+
+.name-rmdr {
+    display: none;
+}
+
+.nav-right {
+    display: none;
+}
+
+.nav-links-mobile {
+    display: none;
+}
+
+@media only screen and (max-width: 800px) {
+    .nav-links-mobile {
+        top: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, .6);
+        z-index: 1;
+        position: fixed;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .nav-right {
+        z-index: 1;
+        display: initial;
+        width: 10%;
+    }
+
+    .nav-menu {
+        height: 100%;
+    }
+
+    .nav-menu span {
+        position: absolute;
+        padding: 2px 15px;
+        background-color: brown;
+    }
+
+    .nav-menu span:nth-child(1) {
+        top: 1em;
+    }
+
+    .nav-menu span:nth-child(2) {
+        top: 1.5em;
+    }
+
+    .nav-menu span:nth-child(3) {
+        top: 2em;
+    }
+
+    .logo {
+        width: 90%;
+    }
+
+    .nav-item-mobile {
+        margin: 0 auto;
+    }
+}
+
+@keyframes move-down {
+    0% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(4em);
+        opacity: 0;
+    }
+}
+
+@font-face {
+    font-family: 'New Yorker';
+    src: url('fonts/NEWYORKR.eot');
+    /* IE9 Compat Modes */
+    src: url('fonts/NEWYORKR.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('fonts/NEWYORKR.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('fonts/NEWYORKR.woff') format('woff'),
+        /* Pretty Modern Browsers */
+        url('fonts/NEWYORKR.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('fonts/NEWYORKR.svg#svgFontName') format('svg');
+    /* Legacy iOS */
+}

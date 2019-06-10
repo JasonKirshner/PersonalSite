@@ -1,0 +1,36 @@
+{
+  "name": "js",
+  "version": "1.0.0",
+  "description": "Portfolio script",
+  "main": "main.js",
+  "scripts": {
+    "build": "browserify main.js -o bundle.js",
+    "watch": "watchify main.js -o bundle.js -v"
+  },
+  "author": "Jason Kirshner",
+  "license": "ISC",
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "env"
+          ]
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "browserify": "^16.2.3",
+    "jquery": "^3.4.1",
+    "scroll-parallax": "^3.0.3",
+    "typed.js": "^2.0.10",
+    "watchify": "^3.11.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "babel-preset-env": "^1.7.0",
+    "babelify": "^10.0.0"
+  }
+}
