@@ -7,6 +7,10 @@
     "build": "browserify main.js -o bundle.js",
     "watch": "watchify main.js -o bundle.js -v"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JasonKirshner/PersonalSite.git"
+  },
   "author": "Jason Kirshner",
   "license": "ISC",
   "browserify": {
@@ -24,7 +28,7 @@
   "dependencies": {
     "browserify": "^16.2.3",
     "jquery": "^3.4.1",
-    "scroll-parallax": "^3.0.3",
+    "rellax": "^1.10.0",
     "typed.js": "^2.0.10",
     "watchify": "^3.11.1"
   },

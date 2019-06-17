@@ -1,27 +1,61 @@
-@import url('https://fonts.googleapis.com/css?family=Original+Surfer&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
 
 body {
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Roboto Mono', monospace;
 }
 
 header {
-    height: 47em;
+    height: 100vh;
     padding: 10%;
     background-image: linear-gradient(#B3E5FC, #0288D1)
 }
 
 .console {
     border-radius: .3em;
-    width: 70%;
-    background-image: url('../img/console.png');
+    background-image: url('../media/console.png');
     background-repeat: no-repeat;
     background-size: 80em;
-    height: 25em;
+    height: 20em;
     margin: 0 auto;
-    padding: 3em .5em 0 0;
+    padding: 3em 1em;
 }
 
+.console [class$="-container"] {
+    margin: 1em 0;
+}
+
+.project {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    color: white;
+    background: rgba(0, 0, 0, .5);
+}
+
+.parallax-img {
+    position: absolute;
+    z-index: -1;
+}
+
+.project-content {
+    display: flex;
+    justify-content: center;
+}
+
+.project-video {
+    height: 30em;
+}
+
+.project-video,
+.project-description {
+    margin: 2em;
+    font-size: 14pt;
+}
+
+.project-title {
+    margin-top: 2em;
+    text-align: center;
+}
 
 #intro-bg {
     -webkit-filter: blur(.2em);
@@ -37,7 +71,7 @@ header {
 }
 
 .intro {
-    display: inline-block;
+    display: inline;
 }
 
 .console div:nth-child(2) .typed-cursor,
@@ -50,7 +84,6 @@ header {
 
 .name {
     font-size: 18pt;
-    padding: 0 .5em;
     color: #4CAF50;
 }
 
@@ -60,9 +93,10 @@ header {
     background-color: white;
 }
 
-.intro h2 {
+[id^="intro-title-"] {
     font-size: 18pt;
     color: white;
+    display: inline;
 }
 
 .typed-cursor.typed-cursor--blink {
@@ -70,23 +104,19 @@ header {
 }
 
 #arrow {
-    color: white;
-}
-
-#arrow {
     animation: move-down 1.5s infinite;
     display: block;
-    margin: 3em auto 0;
+    margin: 5em auto 0;
+    color: white;
 }
 
 .navbar {
     top: 0;
-    background-color: #BDBDBD;
+    background-color: #B3E5FC;
     height: 3.5em;
     margin: 0;
     padding: 0;
     width: 100%;
-    box-shadow: 0 0.3em 0.5em rgba(0, 0, 0, .3)
 }
 
 .nav {
@@ -124,7 +154,7 @@ header {
 
 #last-initial,
 #first-initial {
-    margin-left: 2%;
+    padding-left: 2%;
 }
 
 .name-rmdr {
@@ -139,7 +169,15 @@ header {
     display: none;
 }
 
-@media only screen and (max-width: 800px) {
+/* tablets and desktop */
+@media only screen and (min-width: 884px) {
+    .console {
+        width: 65%;
+    }
+}
+
+/* phones */
+@media only screen and (max-width: 883px) {
     .nav-links-mobile {
         top: 0;
         width: 100%;
@@ -188,6 +226,10 @@ header {
         margin: 0 auto;
     }
 }
+
+/* portrait phones */
+@media only screen and (max-width: 767px) and (orientation: portrait) {}
+
 
 @keyframes move-down {
     0% {
