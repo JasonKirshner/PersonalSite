@@ -42,7 +42,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var parallaxViews = function parallaxViews() {
   new _rellax2.default('.parallax-img', {
-    speed: -3,
+    speed: -6,
     center: true
   });
 };

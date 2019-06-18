@@ -32,7 +32,7 @@ $(document).ready(() => {
 /* Parallax Views */
 var parallaxViews = () => {
     new Rellax('.parallax-img', {
-        speed: -3,
+        speed: -6,
         center: true
     })
 }

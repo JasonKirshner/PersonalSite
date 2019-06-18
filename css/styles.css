@@ -5,9 +5,9 @@ body {
 }
 
 header {
-    height: 100vh;
+    min-height: 100vh;
     padding: 10%;
-    background-image: linear-gradient(#B3E5FC, #0288D1)
+    background-color: #0288D1;
 }
 
 .console {
@@ -27,7 +27,7 @@ header {
 .project {
     position: relative;
     overflow: hidden;
-    height: 100vh;
+    min-height: 100vh;
     color: white;
     background: rgba(0, 0, 0, .5);
 }
@@ -112,7 +112,7 @@ header {
 
 .navbar {
     top: 0;
-    background-color: #B3E5FC;
+    background-color: #0288D1;
     height: 3.5em;
     margin: 0;
     padding: 0;
