@@ -13,9 +13,8 @@ $(document).ready(() => {
     // Console intro
     consoleType()
 
-    // Mobile Menu ckick/tap
-    $('.nav-menu').click(() => {
-        menu()
+    $(window).scroll(() => {
+        colorNav()
     })
 
     // Logo hover animation
@@ -29,10 +28,29 @@ $(document).ready(() => {
     parallaxViews()
 })
 
+
+var colorNav = () => {
+    let pos = $(window).scrollTop()
+    let pj1Pos = $('.pj1').position()
+    if (pos >= (pj1Pos.top - 56)) {
+        $('.navbar').css('backgroundColor', 'rgba(0,0,0,0.2')
+    } else
+        $('.navbar').css('backgroundColor', 'transparent')
+}
 /* Parallax Views */
 var parallaxViews = () => {
-    new Rellax('.parallax-img', {
-        speed: -6,
+    new Rellax('.pj1 .parallax-img', {
+        speed: 4,
+        center: true
+    })
+
+    new Rellax('.pj2 .parallax-img:first-child', {
+        speed: 7,
+        center: true
+    })
+
+    new Rellax('.pj2 .parallax-img:nth-child(2)', {
+        speed: 2,
         center: true
     })
 }
@@ -77,59 +95,56 @@ var consoleType = () => {
     })
 }
 
-/* Initialize Mobile Menu */
-var menu = () => {
-    const $this = $(this),
-        flag = $this.data("clickflag")
-    if (!flag) {
-        $('.nav-links-mobile').css('display', 'inline-block')
-        $('.nav-links-mobile').animate({
-            height: '100%'
-        }, 500)
-        $('#top').animate({}, {
-            duration: 500,
-            start: function (always) {
-                $(this).css({
-                    transition: 'ease-in .3s',
-                    transform: 'rotate(45deg) translateY(.7em)'
-                })
-                $('#mid').fadeToggle(200)
-            }
-        })
-        $('#bot').animate({}, {
-            duration: 500,
-            start: function (always) {
-                $(this).css({
-                    transition: 'ease-in .3s',
-                    transform: 'rotate(-45deg) translateY(-.7em)',
-                })
-            }
-        })
-    } else {
-        $('.nav-links-mobile').animate({
-            height: 0
-        }, 500, () => {
-            $('.nav-links-mobile').css('display', 'none')
-        })
-        $('#top').animate({}, {
-            duration: 500,
-            start: function (always) {
-                $(this).css({
-                    transition: 'ease-in .3s',
-                    transform: 'rotate(0) translateY(0)'
-                })
-                $('#mid').fadeToggle(500)
-            }
-        })
-        $('#bot').animate({}, {
-            duration: 500,
-            start: function (always) {
-                $(this).css({
-                    transition: 'ease-in .3s',
-                    transform: 'rotate(0) translateY(0)',
-                })
-            }
-        })
-    }
-    $this.data("clickflag", !flag)
-}
+// const $this = $(this),
+//     flag = $this.data("clickflag")
+// if (!flag) {
+//     $('.nav-links-mobile').css('display', 'inline-block')
+//     $('.nav-links-mobile').animate({
+//         height: '100%'
+//     }, 500)
+//     $('#top').animate({}, {
+//         duration: 500,
+//         start: function (always) {
+//             $(this).css({
+//                 transition: 'ease-in .3s',
+//                 transform: 'rotate(45deg) translateY(.7em)'
+//             })
+//             $('#mid').fadeToggle(200)
+//         }
+//     })
+//     $('#bot').animate({}, {
+//         duration: 500,
+//         start: function (always) {
+//             $(this).css({
+//                 transition: 'ease-in .3s',
+//                 transform: 'rotate(-45deg) translateY(-.7em)',
+//             })
+//         }
+//     })
+// } else {
+//     $('.nav-links-mobile').animate({
+//         height: 0
+//     }, 500, () => {
+//         $('.nav-links-mobile').css('display', 'none')
+//     })
+//     $('#top').animate({}, {
+//         duration: 500,
+//         start: function (always) {
+//             $(this).css({
+//                 transition: 'ease-in .3s',
+//                 transform: 'rotate(0) translateY(0)'
+//             })
+//             $('#mid').fadeToggle(500)
+//         }
+//     })
+//     $('#bot').animate({}, {
+//         duration: 500,
+//         start: function (always) {
+//             $(this).css({
+//                 transition: 'ease-in .3s',
+//                 transform: 'rotate(0) translateY(0)',
+//             })
+//         }
+//     })
+// }
+// $this.data("clickflag", !flag)
