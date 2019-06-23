@@ -1,6 +1,7 @@
 import $ from 'jquery'
 import Typed from 'typed.js'
 import Rellax from 'rellax'
+import anime from 'animejs'
 
 /* Function called once page is loaded */
 $(document).ready(() => {
@@ -13,29 +14,27 @@ $(document).ready(() => {
     // Console intro
     consoleType()
 
+    // Call functions on scroll
     $(window).scroll(() => {
         colorNav()
-    })
-
-    // Logo hover animation
-    $('.logo').hover(() => {
-        $('.name-rmdr').toggle(400)
-    }, () => {
-        $('.name-rmdr').toggle(400)
+        canvas()
     })
 
     // Load Parallax Views
     parallaxViews()
 })
 
-
+/* Opaque BG at First Project */
 var colorNav = () => {
     let pos = $(window).scrollTop()
     let pj1Pos = $('.pj1').position()
     if (pos >= (pj1Pos.top - 56)) {
         $('.navbar').css('backgroundColor', 'rgba(0,0,0,0.2')
-    } else
+        $('.name-rmdr').hide(300)
+    } else {
         $('.navbar').css('backgroundColor', 'transparent')
+        $('.name-rmdr').show(300)
+    }
 }
 /* Parallax Views */
 var parallaxViews = () => {
@@ -55,13 +54,52 @@ var parallaxViews = () => {
     })
 }
 
+var drawConsole = () => {
+    anime({
+        targets: '.draw',
+        strokeDashoffset: [anime.setDashoffset, 20],
+        easing: 'easeInOutSine',
+        duration: 3000,
+        delay: 1000,
+        direction: 'alternate',
+        loop: false,
+        update: (anim) => {
+            let a = Math.round(anim.progress) / 100
+            console.log(a)
+
+            $('.name:eq(0)').css({
+                color: `rgba(76, 175, 80,${a})`
+            })
+            $('.typed-cursor:eq(0)').css({
+                backgroundColor: `rgba(255, 255, 255,${a})`
+            })
+
+            $('.draw').css({
+                fill: `rgba(0, 4, 44,${a})`
+            })
+            $('.st1').css({
+                fill: `rgba(243, 190, 78,${a})`
+            })
+
+            $('.st2').css({
+                fill: `rgba(235, 104, 93,${a})`
+            })
+
+            $('.st3').css({
+                fill: `rgba(98, 198, 84,${a})`
+            })
+        }
+    })
+}
+
 /* Console Intro */
 var consoleType = () => {
+
     new Typed('.ny', {
         strings: ['<h2 id="intro-title-1">Born in New York</h2>'],
         typeSpeed: 20,
         backSpeed: 20,
-        startDelay: 500,
+        startDelay: 4000,
         cursorChar: '',
         onComplete: (self) => {
             $('.typed-cursor:eq(0)').hide()
@@ -74,7 +112,7 @@ var consoleType = () => {
         strings: ['<h2 id="intro-title-2">Raised in San Diego</h2>'],
         typeSpeed: 20,
         backSpeed: 20,
-        startDelay: 2000,
+        startDelay: 5000,
         cursorChar: '',
         onComplete: (self) => {
             $('.typed-cursor:eq(1)').hide()
@@ -87,12 +125,44 @@ var consoleType = () => {
         strings: ['<h2 id="intro-title-3">Full Stack Web &amp; Mobile App Developer</h2>'],
         typeSpeed: 20,
         backSpeed: 20,
-        startDelay: 3000,
+        startDelay: 6000,
         cursorChar: '',
         onComplete: (self) => {
-            $('#arrow').show()
+            $('#arrow').fadeIn(500)
         }
     })
+}
+
+var canvas = () => {
+    let pos = $(window).scrollTop()
+    let pj1Pos = $('.pj1').position()
+    let pj2Pos = $('.pj2').position()
+    if (pos >= (pj1Pos.top - 56)) {
+        anime({
+            targets: '.pj1 .project-video',
+            translateX: 1000,
+            easing: 'spring(1,50,10,5)'
+        })
+
+        anime({
+            targets: '.pj1 .project-description p',
+            translateX: -1000,
+            easing: 'spring(1,50,10,5)'
+        })
+    }
+    if (pos >= (pj2Pos.top - 56)) {
+        anime({
+            targets: '.pj2 .project-video',
+            translateX: -1000,
+            easing: 'spring(1,50,10,5)'
+        })
+
+        anime({
+            targets: '.pj2 .project-description p',
+            translateX: 1000,
+            easing: 'spring(1,50,10,5)'
+        })
+    }
 }
 
 // const $this = $(this),

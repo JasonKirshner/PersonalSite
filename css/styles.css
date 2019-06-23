@@ -4,6 +4,22 @@ body {
     font-family: 'Roboto Mono', monospace;
 }
 
+svg {
+    position: absolute;
+    z-index: -1;
+    transform: translateY(-15%);
+}
+
+.draw {
+    stroke: rgb(0, 4, 44);
+    fill: none;
+    stroke-width: 4;
+}
+
+path {
+    fill: none;
+}
+
 .navbar {
     top: 0;
     height: 3.5em;
@@ -53,10 +69,6 @@ body {
     padding-left: .5rem;
 }
 
-.name-rmdr {
-    display: none;
-}
-
 .nav-right {
     display: none;
 }
@@ -78,23 +90,16 @@ header {
 }
 
 .intro-wrapper {
-    height: 15vh;
     position: relative;
-
+    height: 100vh;
 }
 
 .console {
-    border-radius: .3em;
-    background-image: url('../media/console.png');
-    background-repeat: no-repeat;
-    background-size: 80em;
-    height: 35vh;
-    width: 70%;
     margin: 0 auto;
-    padding: 3em 1em;
+    padding: 5em 5em;
 }
 
-.console [class$="-container"] {
+.console-line {
     margin: 1em 0;
 }
 
@@ -105,14 +110,15 @@ header {
 .console div:nth-child(2) .typed-cursor,
 .console div:nth-child(3) .typed-cursor,
 .console div:nth-child(2) span:nth-child(1),
-.console div:nth-child(3) span:nth-child(1) {
+.console div:nth-child(3) span:nth-child(1),
+.console div:nth-child(4) span:nth-child(1) {
     display: none;
 }
 
 
-.name {
+.dir {
     font-size: 18pt;
-    color: #4CAF50;
+    color: rgb(76, 175, 80);
 }
 
 .typed-cursor {
@@ -185,18 +191,30 @@ header {
 }
 
 .project-video {
+    position: relative;
     width: 45%;
     height: 45%;
+}
+
+.pj1 .project-video,
+.pj2 .project-description p {
+    left: -1000px;
+}
+
+.pj1 .project-description p,
+.pj2 .project-video {
+    right: -1000px;
 }
 
 .project-description p {
     position: relative;
     font-size: 14pt;
+    position: relative;
 }
 
 .project-video,
 .project-description {
-    margin: 2em;
+    margin: 1rem 4.2rem;
 }
 
 .git-icon {
@@ -216,7 +234,7 @@ header {
     .nav-links-mobile {
         top: 0;
         width: 100%;
-        background-color: rgba(0, 0, 0, .6);
+        background-color: rgba(0, 0, 0, .2);
         z-index: 1;
         position: fixed;
     }
@@ -286,10 +304,11 @@ header {
 
     header {
         justify-content: flex-start;
+        padding: 0;
     }
 
     .intro-wrapper {
-        top: 10vh;
+        top: 20vh;
     }
 
     .console {
