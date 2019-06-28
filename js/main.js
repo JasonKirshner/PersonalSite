@@ -1,60 +1,74 @@
-import $ from 'jquery'
-import Typed from 'typed.js'
-import Rellax from 'rellax'
-import anime from 'animejs'
+//history.scrollRestoration = "manual"
 
-/* Function called once page is loaded */
+// FLAGS
+var revealed = false
+var drawn = false
+
+/* Function Called Once Page is Loaded */
 $(document).ready(() => {
-    // Fade in page on page load
+    // Fade In Page On Page Load
     $("body").fadeIn(1000)
 
-    // Arrow animation at beginning
-    $('#arrow').hide()
-
-    // Console intro
-    consoleType()
-
-    // Call functions on scroll
+    // Reveals Projects When In View
     $(window).scroll(() => {
-        colorNav()
-        canvas()
+        let pos = $(window).scrollTop()
+        $('.intro-wrapper').css({
+            top: -($(this).scrollTop() * 0.2) + 'px'
+        })
+        revealProjects(pos)
+        revealNav(pos)
     })
-
-    // Load Parallax Views
-    parallaxViews()
 })
 
-/* Opaque BG at First Project */
-var colorNav = () => {
-    let pos = $(window).scrollTop()
+/* Dropdown Navbar Once Projects Fully In View */
+var revealNav = (pos) => {
     let pj1Pos = $('.pj1').position()
-    if (pos >= (pj1Pos.top - 56)) {
-        $('.navbar').css('backgroundColor', 'rgba(0,0,0,0.2')
-        $('.name-rmdr').hide(300)
-    } else {
-        $('.navbar').css('backgroundColor', 'transparent')
-        $('.name-rmdr').show(300)
+    if (pos > pj1Pos.top && revealed === false) {
+
+        if ($('.hide')[0])
+            $('.navbar').removeClass('hide')
+
+        $('.navbar').addClass('drop')
+
+        // Draw The Logo SVG
+        if (!drawn) {
+            drawLogo()
+            drawn = true
+        }
+
+        revealed = true
+    } else if (pos < pj1Pos.top && revealed) {
+        $('.navbar').removeClass('drop')
+        $('.navbar').addClass('hide')
+        revealed = false
+    }
+
+    if (pos === 0)
+        drawn = false
+}
+
+/* Add Title Divider On Scroll and Fade In */
+var revealProjects = (pos) => {
+    let pj1Pos = $('.pj1').position()
+    let pj2Pos = $('.pj2').position()
+
+    if (pos >= (pj1Pos.top - 170)) {
+        $('.pj1 .project-container').fadeIn(1000)
+        $('.pj1 .project-title-line').addClass('widen')
+    }
+
+    if (pos >= pj2Pos.top - 170) {
+        $('.pj2 .project-container').fadeIn(1000)
+        $('.pj2 .project-title-line').addClass('widen')
+    }
+
+    if (pos === 0) {
+        $('.project-container').hide()
+        $('.project-title-line').removeClass('widen')
     }
 }
-/* Parallax Views */
-var parallaxViews = () => {
-    new Rellax('.pj1 .parallax-img', {
-        speed: 4,
-        center: true
-    })
 
-    new Rellax('.pj2 .parallax-img:first-child', {
-        speed: 7,
-        center: true
-    })
-
-    new Rellax('.pj2 .parallax-img:nth-child(2)', {
-        speed: 2,
-        center: true
-    })
-}
-
-var drawConsole = () => {
+var drawLogo = () => {
     anime({
         targets: '.draw',
         strokeDashoffset: [anime.setDashoffset, 20],
@@ -62,107 +76,8 @@ var drawConsole = () => {
         duration: 3000,
         delay: 1000,
         direction: 'alternate',
-        loop: false,
-        update: (anim) => {
-            let a = Math.round(anim.progress) / 100
-            console.log(a)
-
-            $('.name:eq(0)').css({
-                color: `rgba(76, 175, 80,${a})`
-            })
-            $('.typed-cursor:eq(0)').css({
-                backgroundColor: `rgba(255, 255, 255,${a})`
-            })
-
-            $('.draw').css({
-                fill: `rgba(0, 4, 44,${a})`
-            })
-            $('.st1').css({
-                fill: `rgba(243, 190, 78,${a})`
-            })
-
-            $('.st2').css({
-                fill: `rgba(235, 104, 93,${a})`
-            })
-
-            $('.st3').css({
-                fill: `rgba(98, 198, 84,${a})`
-            })
-        }
+        loop: false
     })
-}
-
-/* Console Intro */
-var consoleType = () => {
-
-    new Typed('.ny', {
-        strings: ['<h2 id="intro-title-1">Born in New York</h2>'],
-        typeSpeed: 20,
-        backSpeed: 20,
-        startDelay: 4000,
-        cursorChar: '',
-        onComplete: (self) => {
-            $('.typed-cursor:eq(0)').hide()
-            $('.name:eq(1)').show()
-            $('.typed-cursor:eq(1)').show()
-        }
-    })
-
-    new Typed('.sd', {
-        strings: ['<h2 id="intro-title-2">Raised in San Diego</h2>'],
-        typeSpeed: 20,
-        backSpeed: 20,
-        startDelay: 5000,
-        cursorChar: '',
-        onComplete: (self) => {
-            $('.typed-cursor:eq(1)').hide()
-            $('.name:eq(2)').show()
-            $('.typed-cursor:eq(2)').show()
-        }
-    })
-
-    new Typed('.title', {
-        strings: ['<h2 id="intro-title-3">Full Stack Web &amp; Mobile App Developer</h2>'],
-        typeSpeed: 20,
-        backSpeed: 20,
-        startDelay: 6000,
-        cursorChar: '',
-        onComplete: (self) => {
-            $('#arrow').fadeIn(500)
-        }
-    })
-}
-
-var canvas = () => {
-    let pos = $(window).scrollTop()
-    let pj1Pos = $('.pj1').position()
-    let pj2Pos = $('.pj2').position()
-    if (pos >= (pj1Pos.top - 56)) {
-        anime({
-            targets: '.pj1 .project-video',
-            translateX: 1000,
-            easing: 'spring(1,50,10,5)'
-        })
-
-        anime({
-            targets: '.pj1 .project-description p',
-            translateX: -1000,
-            easing: 'spring(1,50,10,5)'
-        })
-    }
-    if (pos >= (pj2Pos.top - 56)) {
-        anime({
-            targets: '.pj2 .project-video',
-            translateX: -1000,
-            easing: 'spring(1,50,10,5)'
-        })
-
-        anime({
-            targets: '.pj2 .project-description p',
-            translateX: 1000,
-            easing: 'spring(1,50,10,5)'
-        })
-    }
 }
 
 // const $this = $(this),

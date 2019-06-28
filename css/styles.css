@@ -1,33 +1,47 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 
 body {
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Quicksand', sans-serif;
+}
+
+h1 {
+    margin: 0;
+    line-height: 1;
 }
 
 svg {
-    position: absolute;
-    z-index: -1;
-    transform: translateY(-15%);
-}
-
-.draw {
-    stroke: rgb(0, 4, 44);
-    fill: none;
-    stroke-width: 4;
+    width: 100%;
+    position: relative;
+    left: -15%;
 }
 
 path {
     fill: none;
 }
 
+.draw {
+    stroke: black;
+    fill: none;
+    stroke-width: 6;
+}
+
 .navbar {
-    top: 0;
-    height: 3.5em;
+    top: -4em;
+    height: 4em;
     margin: 0;
     padding: 0;
     z-index: 2;
     position: fixed;
-    width: 100%;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, .2);
+}
+
+.drop {
+    animation: drop-nav 1s 1 forwards;
+}
+
+.hide {
+    animation: hide-nav 1s 1 forwards;
 }
 
 .nav {
@@ -41,32 +55,27 @@ path {
 }
 
 .nav-links {
-    right: 0;
-    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 80vw;
+    align-items: center;
 }
 
-.nav-links ul {
-    float: right;
-}
-
-.nav-links li {
-    display: inline-block;
+.nav-links a {
+    padding: 0 5%;
 }
 
 .logo {
-    width: 22rem;
-    display: inline-flex;
+    width: 20vw;
+    height: 100%;
+    display: inherit;
 }
 
 .logo h1 {
     font-size: 30pt;
     margin-left: 0;
     margin-bottom: 0;
-}
-
-#last-initial,
-#first-initial {
-    padding-left: .5rem;
 }
 
 .nav-right {
@@ -79,97 +88,53 @@ path {
 
 header {
     min-height: 100vh;
-    padding: 3.5em;
-    background-color: #0288D1;
     min-width: 100vw;
     top: 0;
     position: fixed;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
 }
 
 .intro-wrapper {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../media/intro-bg.jpg') center center;
+    background-size: cover;
+    min-height: 100vh;
     position: relative;
-    height: 100vh;
 }
 
-.console {
-    margin: 0 auto;
-    padding: 5em 5em;
-}
-
-.console-line {
-    margin: 1em 0;
-}
-
-.intro {
-    display: inline;
-}
-
-.console div:nth-child(2) .typed-cursor,
-.console div:nth-child(3) .typed-cursor,
-.console div:nth-child(2) span:nth-child(1),
-.console div:nth-child(3) span:nth-child(1),
-.console div:nth-child(4) span:nth-child(1) {
-    display: none;
-}
-
-
-.dir {
-    font-size: 18pt;
-    color: rgb(76, 175, 80);
+.intro-title {
+    position: relative;
+    top: 7em;
+    color: white;
+    text-align: center;
 }
 
 .typed-cursor {
-    padding: .05em .4em;
+    padding: .05em .5em;
     margin-left: .2em;
+    margin-top: .2em;
     background-color: white;
-}
-
-[id^="intro-title-"] {
-    font-size: 18pt;
-    color: white;
-    display: inline;
 }
 
 .typed-cursor.typed-cursor--blink {
     animation: typedjsBlink 1s infinite;
 }
 
-#arrow {
-    animation: move-down 1.2s infinite;
-    display: block;
-    margin: 5em auto 0;
-}
-
 .project {
     position: relative;
     overflow: hidden;
     min-height: 100vh;
-    color: white;
+    color: black;
     z-index: 1;
     top: 100vh;
-
-}
-
-.project.pj1 {
-    background-color: #f55f47;
-}
-
-.project.pj2 {
-    background-color: #f0db4e;
+    background-color: white;
 }
 
 .project-container {
-    position: relative;
-    background: rgba(0, 0, 0, .5);
-    min-height: 100vh;
+    margin-top: 5em;
+    display: none;
 }
 
 .parallax-img {
-    position: absolute;
-    z-index: -1;
+    opacity: .1;
 }
 
 .project.pj1 .parallax-img {
@@ -194,16 +159,7 @@ header {
     position: relative;
     width: 45%;
     height: 45%;
-}
-
-.pj1 .project-video,
-.pj2 .project-description p {
-    left: -1000px;
-}
-
-.pj1 .project-description p,
-.pj2 .project-video {
-    right: -1000px;
+    box-shadow: 0 0 2em .1em rgba(0, 0, 0, 0.2);
 }
 
 .project-description p {
@@ -222,8 +178,26 @@ header {
 }
 
 .project-title {
-    padding-top: 2em;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 2em 0;
+    flex-wrap: nowrap;
+}
+
+.project-title-line {
+    width: 0;
+    height: 1px;
+    background-color: black;
+    margin-top: 1.3em;
+    transition: width 2s;
+}
+
+.project-title h1 {
+    margin: 0 .5em;
+}
+
+.widen {
+    width: 30%;
 }
 
 /* tablets and desktop */
@@ -247,6 +221,8 @@ header {
         z-index: 1;
         display: initial;
         width: 10%;
+        position: absolute;
+        right: 0;
     }
 
     .nav-menu {
@@ -269,10 +245,6 @@ header {
 
     .nav-menu span:nth-child(3) {
         top: 2em;
-    }
-
-    .logo {
-        width: 90%;
     }
 
     .nav-item-mobile {
@@ -310,26 +282,10 @@ header {
     .intro-wrapper {
         top: 20vh;
     }
-
-    .console {
-        height: 55vh;
-        width: 100%;
-    }
 }
 
 /* portrait phones */
 @media only screen and (max-width: 767px) and (orientation: portrait) {}
-
-
-@keyframes move-down {
-    50% {
-        transform: translateY(2em);
-    }
-
-    100% {
-        transform: translateY(0);
-    }
-}
 
 @keyframes close-menu-top {
     100% {
@@ -343,18 +299,22 @@ header {
     }
 }
 
-@font-face {
-    font-family: 'New Yorker';
-    src: url('fonts/NEWYORKR.eot');
-    /* IE9 Compat Modes */
-    src: url('fonts/NEWYORKR.eot?#iefix') format('embedded-opentype'),
-        /* IE6-IE8 */
-        url('fonts/NEWYORKR.woff2') format('woff2'),
-        /* Super Modern Browsers */
-        url('fonts/NEWYORKR.woff') format('woff'),
-        /* Pretty Modern Browsers */
-        url('fonts/NEWYORKR.ttf') format('truetype'),
-        /* Safari, Android, iOS */
-        url('fonts/NEWYORKR.svg#svgFontName') format('svg');
-    /* Legacy iOS */
+@keyframes drop-nav {
+    from {
+        transform: translateY(-4em)
+    }
+
+    to {
+        transform: translateY(4em);
+    }
+}
+
+@keyframes hide-nav {
+    from {
+        transform: translateY(4em);
+    }
+
+    to {
+        transform: translateY(-4em);
+    }
 }
