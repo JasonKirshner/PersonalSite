@@ -1,7 +1,6 @@
 //history.scrollRestoration = "manual"
 
 // FLAGS
-var revealed = false
 var drawn = false
 
 /* Function Called Once Page is Loaded */
@@ -22,11 +21,8 @@ $(document).ready(() => {
 
 /* Dropdown Navbar Once Projects Fully In View */
 var revealNav = (pos) => {
-    let pj1Pos = $('.pj1').position()
-    if (pos > pj1Pos.top && revealed === false) {
-
-        if ($('.hide')[0])
-            $('.navbar').removeClass('hide')
+    let pj1Pos = $('#pj1').position()
+    if (pos > pj1Pos.top) {
 
         $('.navbar').addClass('drop')
 
@@ -35,31 +31,22 @@ var revealNav = (pos) => {
             drawLogo()
             drawn = true
         }
-
-        revealed = true
-    } else if (pos < pj1Pos.top && revealed) {
-        $('.navbar').removeClass('drop')
-        $('.navbar').addClass('hide')
-        revealed = false
     }
-
-    if (pos === 0)
-        drawn = false
 }
 
 /* Add Title Divider On Scroll and Fade In */
 var revealProjects = (pos) => {
-    let pj1Pos = $('.pj1').position()
-    let pj2Pos = $('.pj2').position()
+    let pj1Pos = $('#pj1').position()
+    let pj2Pos = $('#pj2').position()
 
     if (pos >= (pj1Pos.top - 170)) {
-        $('.pj1 .project-container').fadeIn(1000)
-        $('.pj1 .project-title-line').addClass('widen')
+        $('#pj1 .project-container').fadeIn(1000)
+        $('#pj1 .project-title-line').addClass('widen')
     }
 
     if (pos >= pj2Pos.top - 170) {
-        $('.pj2 .project-container').fadeIn(1000)
-        $('.pj2 .project-title-line').addClass('widen')
+        $('#pj2 .project-container').fadeIn(1000)
+        $('#pj2 .project-title-line').addClass('widen')
     }
 
     if (pos === 0) {
@@ -70,10 +57,19 @@ var revealProjects = (pos) => {
 
 var drawLogo = () => {
     anime({
-        targets: '.draw',
+        targets: '#j',
         strokeDashoffset: [anime.setDashoffset, 20],
         easing: 'easeInOutSine',
-        duration: 3000,
+        duration: 1000,
+        delay: 500,
+        direction: 'alternate',
+        loop: false
+    })
+    anime({
+        targets: '#k',
+        strokeDashoffset: [anime.setDashoffset, 20],
+        easing: 'easeInOutSine',
+        duration: 1000,
         delay: 1000,
         direction: 'alternate',
         loop: false

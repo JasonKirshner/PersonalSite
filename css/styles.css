@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Quicksand', sans-serif;
 }
@@ -9,20 +13,27 @@ h1 {
     line-height: 1;
 }
 
+a,
+a:hover {
+    text-decoration: none;
+}
+
 svg {
     width: 100%;
     position: relative;
     left: -15%;
+    height: 100%;
 }
 
 path {
     fill: none;
 }
 
-.draw {
-    stroke: black;
+#j,
+#k {
+    stroke: white;
     fill: none;
-    stroke-width: 6;
+    stroke-width: 8;
 }
 
 .navbar {
@@ -33,15 +44,11 @@ path {
     z-index: 2;
     position: fixed;
     width: 100vw;
-    background-color: rgba(0, 0, 0, .2);
+    background-color: rgba(0, 0, 0, .8);
 }
 
 .drop {
     animation: drop-nav 1s 1 forwards;
-}
-
-.hide {
-    animation: hide-nav 1s 1 forwards;
 }
 
 .nav {
@@ -58,12 +65,17 @@ path {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    width: 80vw;
-    align-items: center;
+    width: 75vw;
 }
 
 .nav-links a {
-    padding: 0 5%;
+    color: white;
+    height: 100%;
+    padding: 1em 5% 0;
+}
+
+.nav-links a:hover {
+    border-bottom: .2em solid white;
 }
 
 .logo {
@@ -137,16 +149,16 @@ header {
     opacity: .1;
 }
 
-.project.pj1 .parallax-img {
+.project#pj1 .parallax-img {
     right: 7%;
     width: 40%;
 }
 
-.project.pj2 .parallax-img {
+.project#pj2 .parallax-img {
     width: 20%;
 }
 
-.project.pj2 .parallax-img:nth-child(2) {
+.project#pj2 .parallax-img:nth-child(2) {
     left: 27%;
 }
 
@@ -261,16 +273,16 @@ header {
         margin: 2rem auto;
     }
 
-    .project.pj1 .parallax-img {
+    .project#pj1 .parallax-img {
         width: 60%;
     }
 
-    .project.pj2 .parallax-img {
+    .project#pj2 .parallax-img {
         width: 30%;
         top: 40%;
     }
 
-    .project.pj2 .parallax-img:nth-child(2) {
+    .project#pj2 .parallax-img:nth-child(2) {
         left: 60%;
     }
 
@@ -306,15 +318,5 @@ header {
 
     to {
         transform: translateY(4em);
-    }
-}
-
-@keyframes hide-nav {
-    from {
-        transform: translateY(4em);
-    }
-
-    to {
-        transform: translateY(-4em);
     }
 }
