@@ -8,7 +8,9 @@ body {
     font-family: 'Quicksand', sans-serif;
 }
 
-h1 {
+h1,
+h2,
+h3 {
     margin: 0;
     line-height: 1;
 }
@@ -19,9 +21,7 @@ a:hover {
 }
 
 svg {
-    width: 100%;
-    position: relative;
-    left: -15%;
+    padding: 0 1em;
     height: 100%;
 }
 
@@ -53,29 +53,7 @@ path {
 
 .nav {
     height: 100%;
-    width: 100%;
-}
-
-.nav ul {
-    padding: 0;
-    list-style: none;
-}
-
-.nav-links {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    width: 75vw;
-}
-
-.nav-links a {
-    color: white;
-    height: 100%;
-    padding: 1em 5% 0;
-}
-
-.nav-links a:hover {
-    border-bottom: .2em solid white;
+    width: 100vw;
 }
 
 .logo {
@@ -84,10 +62,23 @@ path {
     display: inherit;
 }
 
-.logo h1 {
-    font-size: 30pt;
-    margin-left: 0;
-    margin-bottom: 0;
+.nav-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 80vw;
+}
+
+.nav-links a {
+    color: white;
+    height: 100%;
+    padding: 1em 5% 0;
+    border-bottom: .2em solid transparent;
+    transition: border-bottom .4s;
+}
+
+.nav-links a:hover {
+    border-color: white;
 }
 
 .nav-right {
@@ -106,17 +97,47 @@ header {
 }
 
 .intro-wrapper {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../media/intro-bg.jpg') center center;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../media/intro-bg1.jpg') center center;
     background-size: cover;
     min-height: 100vh;
+    width: 100%;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
 }
 
-.intro-title {
-    position: relative;
-    top: 7em;
+.intro-container {
+    min-height: 25vh;
     color: white;
-    text-align: center;
+}
+
+.intro-name,
+.intro-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#view {
+    color: white;
+    padding: .5em 0;
+    border: .2em solid white;
+    border-radius: 3em;
+    width: 12em;
+    font-size: 16pt;
+    transition: all .6s;
+    position: relative;
+    bottom: -5em;
+    transition: all 1s;
+    opacity: 0;
+}
+
+#view:hover {
+    color: black;
+    background-color: white;
 }
 
 .typed-cursor {
@@ -135,7 +156,6 @@ header {
     overflow: hidden;
     min-height: 100vh;
     color: black;
-    z-index: 1;
     top: 100vh;
     background-color: white;
 }
@@ -143,10 +163,6 @@ header {
 .project-container {
     margin-top: 5em;
     display: none;
-}
-
-.parallax-img {
-    opacity: .1;
 }
 
 .project#pj1 .parallax-img {
@@ -180,13 +196,59 @@ header {
     position: relative;
 }
 
+.tech {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 2em;
+}
+
+.tech:hover span {
+    width: 20%;
+}
+
+.tech span {
+    height: 1px;
+    background-color: black;
+    width: 0;
+    margin: .5em auto 1em;
+    transition: width 1s;
+}
+
+.tech-imgs {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.tech-img-container {
+    margin: 0 1em;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tech-img {
+    width: 4rem;
+}
+
 .project-video,
 .project-description {
     margin: 1rem 4.2rem;
 }
 
-.git-icon {
-    width: 5rem;
+.icon-imgs {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 2em;
+}
+
+.icon-img {
+    margin-right: 1em;
+    width: 3rem;
 }
 
 .project-title {
@@ -204,12 +266,71 @@ header {
     transition: width 2s;
 }
 
-.project-title h1 {
+.project-title h2 {
     margin: 0 .5em;
 }
 
 .widen {
-    width: 30%;
+    width: 20%;
+}
+
+footer {
+    top: 100vh;
+    bottom: 0;
+    min-height: 100vh;
+    min-width: 100vw;
+    position: relative;
+    background-color: #dfdfdf;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../media/footer-bg.jpg') center center;
+    background-size: cover;
+}
+
+.footer-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-height: 95vh;
+}
+
+.footer-refs,
+.footer-docs {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    margin: 2em 0;
+}
+
+.footer-docs a {
+    color: white;
+    padding: .5em 0;
+    border: .2em solid white;
+    border-radius: 3em;
+    width: 12em;
+    text-align: center;
+    font-size: 16pt;
+    transition: all .6s;
+}
+
+.footer-docs a:hover {
+    color: black;
+    background-color: white;
+}
+
+.footer-wrapper div[class^="footer-"] a {
+    margin: 0 .5em;
+}
+
+#footer-notes {
+    min-height: 5vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.ref-img {
+    width: 4em;
 }
 
 /* tablets and desktop */
@@ -289,10 +410,6 @@ header {
     header {
         justify-content: flex-start;
         padding: 0;
-    }
-
-    .intro-wrapper {
-        top: 20vh;
     }
 }
 

@@ -2,36 +2,50 @@
 
 // FLAGS
 var drawn = false
+var projectsRevealed = false
+var navRevealed = false
 
 /* Function Called Once Page is Loaded */
 $(document).ready(() => {
     // Fade In Page On Page Load
     $("body").fadeIn(1000)
 
+    VanillaTilt.init(document.querySelectorAll(".project-video"), {
+        max: 1.5,
+        speed: 1000,
+        scale: 1.01
+    })
+
+    typeTitle()
+
     // Reveals Projects When In View
     $(window).scroll(() => {
         let pos = $(window).scrollTop()
         $('.intro-wrapper').css({
-            top: -($(this).scrollTop() * 0.2) + 'px'
+            top: -(pos * .3) + 'px'
         })
-        revealProjects(pos)
-        revealNav(pos)
+        if (!projectsRevealed)
+            revealProjects(pos)
+        //if (!navRevealed)
+        //revealNav(pos)
     })
+
 })
 
 /* Dropdown Navbar Once Projects Fully In View */
-var revealNav = (pos) => {
+var revealNav = () => {
     let pj1Pos = $('#pj1').position()
-    if (pos > pj1Pos.top) {
+    // if (pos > pj1Pos.top) {
 
-        $('.navbar').addClass('drop')
+    $('.navbar').addClass('drop')
 
-        // Draw The Logo SVG
-        if (!drawn) {
-            drawLogo()
-            drawn = true
-        }
+    // Draw The Logo SVG
+    if (!drawn) {
+        drawLogo()
+        drawn = true
     }
+    navRevealed = true
+    //}
 }
 
 /* Add Title Divider On Scroll and Fade In */
@@ -47,11 +61,7 @@ var revealProjects = (pos) => {
     if (pos >= pj2Pos.top - 170) {
         $('#pj2 .project-container').fadeIn(1000)
         $('#pj2 .project-title-line').addClass('widen')
-    }
-
-    if (pos === 0) {
-        $('.project-container').hide()
-        $('.project-title-line').removeClass('widen')
+        projectsRevealed = true
     }
 }
 
@@ -73,6 +83,34 @@ var drawLogo = () => {
         delay: 1000,
         direction: 'alternate',
         loop: false
+    })
+}
+
+var typeTitle = () => {
+    new Typed('.intro-name h1', {
+        strings: ["Jason Kirshner"],
+        startDelay: 500,
+        typeSpeed: 20,
+        onStart: () => {
+            $('.typed-cursor:eq(0)').show()
+        },
+        onComplete: () => {
+            $('.typed-cursor:eq(0)').hide()
+            new Typed('.intro-title h1', {
+                strings: ["Full Stack Developer"],
+                typeSpeed: 15,
+                startDelay: 200,
+                onComplete: () => {
+                    $('#view').css({
+                        bottom: 0,
+                        opacity: 1
+                    })
+
+                    if (!navRevealed)
+                        revealNav()
+                }
+            })
+        }
     })
 }
 
