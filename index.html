@@ -4,11 +4,9 @@
 <head>
     <title>Jason K</title>
     <meta charset="utf-8">
-    <meta dir="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
-        integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
     <link rel="preload" href="css/styles.css" as="style" onload="this.rel='stylesheet'">
 </head>
 
@@ -27,7 +25,7 @@
     <nav class="navbar">
         <div class="nav">
             <div class="logo">
-                <a href="#">
+                <a>
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 640 480"
                         style="enable-background:new 0 0 640 480;" xml:space="preserve">
@@ -72,10 +70,20 @@
                 </div>
             </div>
             <div class="nav-links">
-                <a href="#pj1">Breakthrough</a>
-                <a href="#pj2">Vbay</a>
-                <a href="#">Vacuum Express</a>
-                <a href="#foot"></a>
+                <a>Breakthrough</a>
+                <a>Vbay</a>
+                <a>Vacuum Express</a>
+                <a>
+                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="960px" height="560px"
+                        viewBox="0 0 960 560" enable-background="new 0 0 960 560" xml:space="preserve">
+                        <g id="Rounded_Rectangle_33_copy_4_1_">
+                            <path d="M480,344.181L268.869,131.889c-15.756-15.859-41.3-15.859-57.054,0c-15.754,15.857-15.754,41.57,0,57.431l237.632,238.937
+                       c8.395,8.451,19.562,12.254,30.553,11.698c10.993,0.556,22.159-3.247,30.555-11.698l237.631-238.937
+                       c15.756-15.86,15.756-41.571,0-57.431s-41.299-15.859-57.051,0L480,344.181z" />
+                        </g>
+                    </svg>
+                </a>
             </div>
         </div>
     </nav>
@@ -157,6 +165,9 @@
                 <span class="project-title-line"></span>
             </div>
             <div class="project-content">
+                <video class="project-video" preload autoplay muted loop>
+                    <source src="media/vbay.mp4" type="video/mp4">
+                </video>
                 <div class="project-description">
                     <div class="icon-imgs">
                         <a href="https://github.com/JasonKirshner/vbay" target="_blank">
@@ -203,15 +214,12 @@
                         </div>
                     </div>
                 </div>
-                <video class="project-video" preload autoplay muted loop>
-                    <source src="media/vbay.mp4" type="video/mp4">
-                </video>
             </div>
         </div>
     </section>
 
     <footer id="foot">
-        <div class="footer-wrapper">
+        <div class="footer-container">
             <div class="footer-docs">
                 <a href="">Resume</a>
                 <a href="">Cover Letter</a>

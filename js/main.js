@@ -3,7 +3,6 @@
 // FLAGS
 var drawn = false
 var projectsRevealed = false
-var navRevealed = false
 
 /* Function Called Once Page is Loaded */
 $(document).ready(() => {
@@ -24,18 +23,20 @@ $(document).ready(() => {
         $('.intro-wrapper').css({
             top: -(pos * .3) + 'px'
         })
+
         if (!projectsRevealed)
             revealProjects(pos)
-        //if (!navRevealed)
-        //revealNav(pos)
+
+        arrow(pos)
     })
+
+    navigation()
 
 })
 
 /* Dropdown Navbar Once Projects Fully In View */
 var revealNav = () => {
     let pj1Pos = $('#pj1').position()
-    // if (pos > pj1Pos.top) {
 
     $('.navbar').addClass('drop')
 
@@ -44,8 +45,6 @@ var revealNav = () => {
         drawLogo()
         drawn = true
     }
-    navRevealed = true
-    //}
 }
 
 /* Add Title Divider On Scroll and Fade In */
@@ -105,12 +104,41 @@ var typeTitle = () => {
                         bottom: 0,
                         opacity: 1
                     })
-
-                    if (!navRevealed)
-                        revealNav()
+                    revealNav()
                 }
             })
         }
+    })
+}
+
+var arrow = (pos) => {
+    if (pos === $('#foot').position().top)
+        $('.nav-links svg').css({
+            transform: 'rotate(-180deg)'
+        })
+    else
+        $('.nav-links svg').css({
+            transform: 'rotate(0deg)'
+        })
+}
+
+var navigation = () => {
+    $('.nav-links a:eq(0)').click(() => {
+        $('html, body').animate({
+            scrollTop: ($('#pj1').offset().top)
+        }, 10)
+    })
+
+    $('.nav-links a:eq(1)').click(() => {
+        $('html, body').animate({
+            scrollTop: ($('#pj2').offset().top)
+        }, 10)
+    })
+
+    $('.nav-links a:last-child').click(() => {
+        $('html, body').animate({
+            scrollTop: ($('#foot').offset().top)
+        }, 10)
     })
 }
 

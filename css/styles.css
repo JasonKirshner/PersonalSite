@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -11,22 +16,12 @@ body {
 h1,
 h2,
 h3 {
-    margin: 0;
     line-height: 1;
 }
 
 a,
 a:hover {
     text-decoration: none;
-}
-
-svg {
-    padding: 0 1em;
-    height: 100%;
-}
-
-path {
-    fill: none;
 }
 
 #j,
@@ -48,10 +43,11 @@ path {
 }
 
 .drop {
-    animation: drop-nav 1s 1 forwards;
+    animation: drop-nav 1s forwards;
 }
 
 .nav {
+    display: flex;
     height: 100%;
     width: 100vw;
 }
@@ -60,6 +56,16 @@ path {
     width: 20vw;
     height: 100%;
     display: inherit;
+    cursor: pointer;
+}
+
+.logo svg {
+    padding: 0 1em;
+    height: 100%;
+}
+
+.logo path {
+    fill: none;
 }
 
 .nav-links {
@@ -71,14 +77,40 @@ path {
 
 .nav-links a {
     color: white;
-    height: 100%;
     padding: 1em 5% 0;
     border-bottom: .2em solid transparent;
     transition: border-bottom .4s;
+    cursor: pointer;
 }
 
 .nav-links a:hover {
     border-color: white;
+}
+
+.nav-links a:hover path {
+    fill: white;
+}
+
+.arrow-flip {
+    transform: rotate(-180deg);
+}
+
+.nav-links a:last-child {
+    padding: 0 2em;
+}
+
+.nav-links svg {
+    transform: rotate(0deg);
+    width: 3em;
+    height: 100%;
+    transition: transform .2s;
+}
+
+.nav-links svg path {
+    fill: transparent;
+    stroke: white;
+    stroke-width: 30;
+    transition: fill .4s;
 }
 
 .nav-right {
@@ -116,9 +148,14 @@ header {
 
 .intro-name,
 .intro-title {
+    font-size: 21pt;
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+.intro-name {
+    margin-bottom: .5em;
 }
 
 #view {
@@ -131,13 +168,9 @@ header {
     transition: all .6s;
     position: relative;
     bottom: -5em;
-    transition: all 1s;
+    transition: all .5s;
     opacity: 0;
-}
-
-#view:hover {
-    color: black;
-    background-color: white;
+    margin-top: 2em;
 }
 
 .typed-cursor {
@@ -158,10 +191,10 @@ header {
     color: black;
     top: 100vh;
     background-color: white;
+    padding-top: 5em;
 }
 
 .project-container {
-    margin-top: 5em;
     display: none;
 }
 
@@ -190,10 +223,39 @@ header {
     box-shadow: 0 0 2em .1em rgba(0, 0, 0, 0.2);
 }
 
+.project-video,
+.project-description {
+    margin: 0 4.2rem;
+}
+
 .project-description p {
     position: relative;
     font-size: 14pt;
     position: relative;
+}
+
+.project-title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4em;
+    flex-wrap: nowrap;
+}
+
+.project-title-line {
+    width: 0;
+    height: 1px;
+    background-color: black;
+    margin-top: 1em;
+    transition: width 2s;
+}
+
+.project-title h2 {
+    font-size: 24pt;
+    margin: 0 .5em;
+}
+
+.widen {
+    width: 20%;
 }
 
 .tech {
@@ -202,10 +264,6 @@ header {
     flex-direction: column;
     text-align: center;
     margin-top: 2em;
-}
-
-.tech:hover span {
-    width: 20%;
 }
 
 .tech span {
@@ -235,11 +293,6 @@ header {
     width: 4rem;
 }
 
-.project-video,
-.project-description {
-    margin: 1rem 4.2rem;
-}
-
 .icon-imgs {
     display: flex;
     justify-content: flex-start;
@@ -249,29 +302,8 @@ header {
 .icon-img {
     margin-right: 1em;
     width: 3rem;
-}
-
-.project-title {
-    display: flex;
-    justify-content: center;
-    padding: 2em 0;
-    flex-wrap: nowrap;
-}
-
-.project-title-line {
-    width: 0;
-    height: 1px;
-    background-color: black;
-    margin-top: 1.3em;
-    transition: width 2s;
-}
-
-.project-title h2 {
-    margin: 0 .5em;
-}
-
-.widen {
-    width: 20%;
+    transform: scale(1);
+    transition: transform .2s;
 }
 
 footer {
@@ -285,7 +317,7 @@ footer {
     background-size: cover;
 }
 
-.footer-wrapper {
+.footer-container {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -312,12 +344,7 @@ footer {
     transition: all .6s;
 }
 
-.footer-docs a:hover {
-    color: black;
-    background-color: white;
-}
-
-.footer-wrapper div[class^="footer-"] a {
+.footer-container a {
     margin: 0 .5em;
 }
 
@@ -331,13 +358,46 @@ footer {
 
 .ref-img {
     width: 4em;
+    opacity: .8;
+    transition: opacity .3s;
 }
 
-/* tablets and desktop */
-@media only screen and (min-width: 986px) {}
+@media only screen and (min-width: 986px) {
+    #view:hover {
+        color: black;
+        background-color: white;
+    }
 
-/* phones */
+    .tech:hover span {
+        width: 20%;
+    }
+
+    .icon-img:hover {
+        transform: scale(1.2);
+    }
+
+    .footer-docs a:hover {
+        color: black;
+        background-color: white;
+    }
+
+    .ref-img:hover {
+        opacity: 1;
+    }
+}
+
+/* Smart Phones */
 @media only screen and (max-width: 986px) {
+
+    .tech span {
+        width: 20%;
+    }
+
+    .intro-name,
+    .intro-title {
+        font-size: 16pt;
+    }
+
     .nav-links-mobile {
         top: 0;
         width: 100%;
@@ -394,19 +454,6 @@ footer {
         margin: 2rem auto;
     }
 
-    .project#pj1 .parallax-img {
-        width: 60%;
-    }
-
-    .project#pj2 .parallax-img {
-        width: 30%;
-        top: 40%;
-    }
-
-    .project#pj2 .parallax-img:nth-child(2) {
-        left: 60%;
-    }
-
     header {
         justify-content: flex-start;
         padding: 0;
@@ -430,10 +477,20 @@ footer {
 
 @keyframes drop-nav {
     from {
-        transform: translateY(-4em)
+        transform: translateY(-4em);
     }
 
     to {
         transform: translateY(4em);
+    }
+}
+
+@keyframes drop-nav-responsive {
+    from {
+        transform: translateY(-7em);
+    }
+
+    to {
+        transform: translateY(7em);
     }
 }
