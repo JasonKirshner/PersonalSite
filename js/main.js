@@ -1,8 +1,11 @@
-//history.scrollRestoration = "manual"
+history.scrollRestoration = "manual"
 
 // FLAGS
 var drawn = false
 var projectsRevealed = false
+
+// Global Vars
+var arrowTarget = '#foot'
 
 /* Function Called Once Page is Loaded */
 $(document).ready(() => {
@@ -20,24 +23,27 @@ $(document).ready(() => {
     // Reveals Projects When In View
     $(window).scroll(() => {
         let pos = $(window).scrollTop()
+
         $('.intro-wrapper').css({
             top: -(pos * .3) + 'px'
         })
 
-        if (!projectsRevealed)
-            revealProjects(pos)
+        revealProjects(pos)
+
+        navPosHighlight(pos)
 
         arrow(pos)
+
+        navOpacity(pos)
     })
 
-    navigation()
+    navButtons()
 
+    mobileMenu()
 })
 
 /* Dropdown Navbar Once Projects Fully In View */
 var revealNav = () => {
-    let pj1Pos = $('#pj1').position()
-
     $('.navbar').addClass('drop')
 
     // Draw The Logo SVG
@@ -49,18 +55,17 @@ var revealNav = () => {
 
 /* Add Title Divider On Scroll and Fade In */
 var revealProjects = (pos) => {
-    let pj1Pos = $('#pj1').position()
-    let pj2Pos = $('#pj2').position()
+    if (!projectsRevealed) {
+        if (pos >= $('#pj1').position().top - 200) {
+            $('#pj1 .project-container').fadeIn(500)
+            $('#pj1 .project-title-line').addClass('widen')
+        }
 
-    if (pos >= (pj1Pos.top - 170)) {
-        $('#pj1 .project-container').fadeIn(1000)
-        $('#pj1 .project-title-line').addClass('widen')
-    }
-
-    if (pos >= pj2Pos.top - 170) {
-        $('#pj2 .project-container').fadeIn(1000)
-        $('#pj2 .project-title-line').addClass('widen')
-        projectsRevealed = true
+        if (pos >= $('#pj2').position().top - 200) {
+            $('#pj2 .project-container').fadeIn(500)
+            $('#pj2 .project-title-line').addClass('widen')
+            projectsRevealed = true
+        }
     }
 }
 
@@ -112,17 +117,23 @@ var typeTitle = () => {
 }
 
 var arrow = (pos) => {
-    if (pos === $('#foot').position().top)
+    if (pos >= $('#foot').position().top) {
         $('.nav-links svg').css({
             transform: 'rotate(-180deg)'
         })
-    else
+        arrowTarget = '#'
+    } else {
         $('.nav-links svg').css({
             transform: 'rotate(0deg)'
         })
+        arrowTarget = '#foot'
+    }
 }
 
-var navigation = () => {
+var navButtons = (pos) => {
+    $('.logo').click(() => {
+        location.reload()
+    })
     $('.nav-links a:eq(0)').click(() => {
         $('html, body').animate({
             scrollTop: ($('#pj1').offset().top)
@@ -136,62 +147,58 @@ var navigation = () => {
     })
 
     $('.nav-links a:last-child').click(() => {
+        var tgt
+        if (arrowTarget === '#foot')
+            tgt = $(arrowTarget).offset().top
+        else
+            tgt = 0
+
         $('html, body').animate({
-            scrollTop: ($('#foot').offset().top)
+            scrollTop: tgt
         }, 10)
     })
 }
 
-// const $this = $(this),
-//     flag = $this.data("clickflag")
-// if (!flag) {
-//     $('.nav-links-mobile').css('display', 'inline-block')
-//     $('.nav-links-mobile').animate({
-//         height: '100%'
-//     }, 500)
-//     $('#top').animate({}, {
-//         duration: 500,
-//         start: function (always) {
-//             $(this).css({
-//                 transition: 'ease-in .3s',
-//                 transform: 'rotate(45deg) translateY(.7em)'
-//             })
-//             $('#mid').fadeToggle(200)
-//         }
-//     })
-//     $('#bot').animate({}, {
-//         duration: 500,
-//         start: function (always) {
-//             $(this).css({
-//                 transition: 'ease-in .3s',
-//                 transform: 'rotate(-45deg) translateY(-.7em)',
-//             })
-//         }
-//     })
-// } else {
-//     $('.nav-links-mobile').animate({
-//         height: 0
-//     }, 500, () => {
-//         $('.nav-links-mobile').css('display', 'none')
-//     })
-//     $('#top').animate({}, {
-//         duration: 500,
-//         start: function (always) {
-//             $(this).css({
-//                 transition: 'ease-in .3s',
-//                 transform: 'rotate(0) translateY(0)'
-//             })
-//             $('#mid').fadeToggle(500)
-//         }
-//     })
-//     $('#bot').animate({}, {
-//         duration: 500,
-//         start: function (always) {
-//             $(this).css({
-//                 transition: 'ease-in .3s',
-//                 transform: 'rotate(0) translateY(0)',
-//             })
-//         }
-//     })
-// }
-// $this.data("clickflag", !flag)
+var navPosHighlight = (pos) => {
+    let pj1Pos = $('#pj1').position().top
+    let pj2Pos = $('#pj2').position().top
+    let footerPos = $('#foot').position().top
+
+    if (pos >= pj1Pos && pos < pj2Pos)
+        $('.nav-links a:eq(0)').css({
+            borderBottomColor: 'white'
+        })
+    else
+        $('.nav-links a:eq(0)').css({
+            borderBottomColor: ''
+        })
+
+    if (pos >= pj2Pos && pos < footerPos)
+        $('.nav-links a:eq(1)').css({
+            borderBottomColor: 'white'
+        })
+    else
+        $('.nav-links a:eq(1)').css({
+            borderBottomColor: ''
+        })
+
+    if (pos >= footerPos)
+        $('.nav-links a:last-child').css({
+            borderBottomColor: 'white'
+        })
+    else
+        $('.nav-links a:last-child').css({
+            borderBottomColor: ''
+        })
+}
+
+var navOpacity = (pos) => {
+    if (pos < 400)
+        $('.navbar').css({
+            backgroundColor: `rgba(0,0,0,${pos/500})`
+        })
+}
+
+var mobileMenu = () => {
+    $('.mobil-nav-menu').click()
+}

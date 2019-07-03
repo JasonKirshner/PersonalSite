@@ -39,7 +39,7 @@ a:hover {
     z-index: 2;
     position: fixed;
     width: 100vw;
-    background-color: rgba(0, 0, 0, .8);
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .drop {
@@ -60,7 +60,7 @@ a:hover {
 }
 
 .logo svg {
-    padding: 0 1em;
+    padding: 0 2em;
     height: 100%;
 }
 
@@ -78,21 +78,18 @@ a:hover {
 .nav-links a {
     color: white;
     padding: 1em 5% 0;
-    border-bottom: .2em solid transparent;
-    transition: border-bottom .4s;
+    border-bottom: .2em solid;
+    border-bottom-color: transparent;
+    transition: border-bottom-color .4s;
     cursor: pointer;
 }
 
 .nav-links a:hover {
-    border-color: white;
+    border-bottom-color: white;
 }
 
 .nav-links a:hover path {
     fill: white;
-}
-
-.arrow-flip {
-    transform: rotate(-180deg);
 }
 
 .nav-links a:last-child {
@@ -113,7 +110,7 @@ a:hover {
     transition: fill .4s;
 }
 
-.nav-right {
+.mobile-nav {
     display: none;
 }
 
@@ -129,7 +126,7 @@ header {
 }
 
 .intro-wrapper {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../media/intro-bg1.jpg') center center;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../media/img/intro-bg.jpg') center center;
     background-size: cover;
     min-height: 100vh;
     width: 100%;
@@ -161,7 +158,7 @@ header {
 #view {
     color: white;
     padding: .5em 0;
-    border: .2em solid white;
+    border: .1em solid white;
     border-radius: 3em;
     width: 12em;
     font-size: 16pt;
@@ -187,11 +184,11 @@ header {
 .project {
     position: relative;
     overflow: hidden;
-    min-height: 100vh;
+    min-height: 90vh;
     color: black;
     top: 100vh;
     background-color: white;
-    padding-top: 5em;
+    padding: 10vh 3em 0;
 }
 
 .project-container {
@@ -216,28 +213,9 @@ header {
     justify-content: center;
 }
 
-.project-video {
-    position: relative;
-    width: 45%;
-    height: 45%;
-    box-shadow: 0 0 2em .1em rgba(0, 0, 0, 0.2);
-}
-
-.project-video,
-.project-description {
-    margin: 0 4.2rem;
-}
-
-.project-description p {
-    position: relative;
-    font-size: 14pt;
-    position: relative;
-}
-
 .project-title {
     display: flex;
     justify-content: center;
-    margin-bottom: 4em;
     flex-wrap: nowrap;
 }
 
@@ -256,6 +234,33 @@ header {
 
 .widen {
     width: 20%;
+}
+
+.icon-imgs {
+    display: flex;
+    justify-content: center;
+    margin: 3em 0;
+}
+
+.icon-img {
+    margin: 0 1em;
+    width: 3rem;
+    transform: scale(1);
+    transition: transform .2s;
+}
+
+.project-video {
+    position: relative;
+    width: 45%;
+    height: 45%;
+    box-shadow: 0 0 2em .1em rgba(0, 0, 0, 0.2);
+    margin-right: 6em;
+}
+
+.project-description p {
+    position: relative;
+    font-size: 14pt;
+    position: relative;
 }
 
 .tech {
@@ -290,20 +295,7 @@ header {
 }
 
 .tech-img {
-    width: 4rem;
-}
-
-.icon-imgs {
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 2em;
-}
-
-.icon-img {
-    margin-right: 1em;
-    width: 3rem;
-    transform: scale(1);
-    transition: transform .2s;
+    width: 5rem;
 }
 
 footer {
@@ -313,7 +305,7 @@ footer {
     min-width: 100vw;
     position: relative;
     background-color: #dfdfdf;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../media/footer-bg.jpg') center center;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../media/img/footer-bg.jpg') center center;
     background-size: cover;
 }
 
@@ -336,7 +328,7 @@ footer {
 .footer-docs a {
     color: white;
     padding: .5em 0;
-    border: .2em solid white;
+    border: .1em solid white;
     border-radius: 3em;
     width: 12em;
     text-align: center;
@@ -410,34 +402,23 @@ footer {
         display: none;
     }
 
-    .nav-right {
-        z-index: 1;
-        display: initial;
-        width: 10%;
-        position: absolute;
-        right: 0;
+    .mobile-nav {
+        display: flex;
+        width: 80vw;
+        justify-content: flex-end;
     }
 
-    .nav-menu {
-        height: 100%;
+    .mobile-nav-menu {
+        display: flex;
+        flex-direction: column;
+        padding: 1em 2em;
+        cursor: pointer;
     }
 
-    .nav-menu span {
-        position: absolute;
+    .mobile-nav-menu span {
         padding: 2px 15px;
-        background-color: brown;
-    }
-
-    .nav-menu span:nth-child(1) {
-        top: 1em;
-    }
-
-    .nav-menu span:nth-child(2) {
-        top: 1.5em;
-    }
-
-    .nav-menu span:nth-child(3) {
-        top: 2em;
+        background-color: white;
+        margin: .2em 0;
     }
 
     .nav-item-mobile {
