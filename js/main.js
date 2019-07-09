@@ -24,17 +24,13 @@ $(document).ready(() => {
     $(window).scroll(() => {
         let pos = $(window).scrollTop()
 
-        $('.intro-wrapper').css({
-            top: -(pos * .3) + 'px'
-        })
-
         revealProjects(pos)
 
         navPosHighlight(pos)
 
         arrow(pos)
 
-        navOpacity(pos)
+        navShadow(pos)
     })
 
     navButtons()
@@ -147,7 +143,7 @@ var navButtons = (pos) => {
     })
 
     $('.nav-links a:last-child').click(() => {
-        var tgt
+        let tgt
         if (arrowTarget === '#foot')
             tgt = $(arrowTarget).offset().top
         else
@@ -166,7 +162,7 @@ var navPosHighlight = (pos) => {
 
     if (pos >= pj1Pos && pos < pj2Pos)
         $('.nav-links a:eq(0)').css({
-            borderBottomColor: 'white'
+            borderBottomColor: 'black'
         })
     else
         $('.nav-links a:eq(0)').css({
@@ -175,7 +171,7 @@ var navPosHighlight = (pos) => {
 
     if (pos >= pj2Pos && pos < footerPos)
         $('.nav-links a:eq(1)').css({
-            borderBottomColor: 'white'
+            borderBottomColor: 'black'
         })
     else
         $('.nav-links a:eq(1)').css({
@@ -184,7 +180,7 @@ var navPosHighlight = (pos) => {
 
     if (pos >= footerPos)
         $('.nav-links a:last-child').css({
-            borderBottomColor: 'white'
+            borderBottomColor: 'black'
         })
     else
         $('.nav-links a:last-child').css({
@@ -192,11 +188,11 @@ var navPosHighlight = (pos) => {
         })
 }
 
-var navOpacity = (pos) => {
-    if (pos < 400)
-        $('.navbar').css({
-            backgroundColor: `rgba(0,0,0,${pos/500})`
-        })
+var navShadow = (pos) => {
+    if (pos > $('#pj1').position().top - 70)
+        $('.navbar').css('box-shadow', '0 .2em .5em rgba(0, 0, 0, .2)')
+    else
+        $('.navbar').css('box-shadow', 'none')
 }
 
 var mobileMenu = () => {
