@@ -292,7 +292,6 @@ header {
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-bottom: 1em;
 }
 
 .tech-img-container {
@@ -305,6 +304,7 @@ header {
 
 .tech-img {
     width: 5rem;
+    margin-bottom: 1em;
 }
 
 footer {
