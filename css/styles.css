@@ -168,6 +168,7 @@ header {
     transition: all .5s;
     opacity: 0;
     margin-top: 2em;
+    cursor: pointer;
 }
 
 .typed-cursor {
@@ -192,7 +193,7 @@ header {
 }
 
 .project-container {
-    display: none;
+    /* display: none; */
 }
 
 .project#pj1 .parallax-img {
@@ -257,10 +258,17 @@ header {
     margin-right: 6em;
 }
 
-.project-description p {
+.project-description {
     position: relative;
     font-size: 14pt;
-    position: relative;
+}
+
+.list-title {
+    margin: 1em 0;
+}
+
+.project-description ul {
+    margin-left: 1.5em;
 }
 
 .tech {
@@ -284,6 +292,7 @@ header {
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
+    margin-bottom: 1em;
 }
 
 .tech-img-container {
@@ -410,14 +419,6 @@ footer {
         font-size: 10pt;
     }
 
-    .nav-links-mobile {
-        top: 0;
-        width: 100%;
-        background-color: rgba(0, 0, 0, .2);
-        z-index: 1;
-        position: fixed;
-    }
-
     .nav-links {
         display: none;
     }
@@ -426,6 +427,22 @@ footer {
         display: flex;
         width: 80vw;
         justify-content: flex-end;
+    }
+
+    .open-top {
+        animation: open-top .7s forwards;
+    }
+
+    .open-bot {
+        animation: open-bot .7s forwards;
+    }
+
+    .close-top {
+        animation: close-top .7s forwards;
+    }
+
+    .close-bot {
+        animation: close-bot .7s forwards;
     }
 
     .mobile-nav-menu {
@@ -437,12 +454,28 @@ footer {
 
     .mobile-nav-menu span {
         padding: 2px 15px;
-        background-color: white;
+        background-color: black;
         margin: .2em 0;
     }
 
-    .nav-item-mobile {
-        margin: 0 auto;
+    .nav-links-mobile {
+        position: fixed;
+        display: none;
+        z-index: 2;
+        top: 4em;
+        background-color: white;
+        height: 0;
+        width: 100vw;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-links-mobile a {
+        font-size: 24pt;
+        font-weight: bold;
+        padding: 1em;
+        cursor: pointer;
     }
 
     .project-content {
@@ -461,18 +494,51 @@ footer {
     }
 }
 
-/* portrait phones */
-@media only screen and (max-width: 767px) and (orientation: portrait) {}
+@keyframes open-top {
+    50% {
+        transform: translateY(.7em) rotate(0);
+    }
 
-@keyframes close-menu-top {
     100% {
-        transform: rotate(45deg) translateY(.7em);
+        transform: translateY(.7em) rotate(45deg);
     }
 }
 
-@keyframes close-menu-bot {
+@keyframes open-bot {
+    50% {
+        transform: translateY(-.6em) rotate(0);
+    }
+
     100% {
-        transform: rotate(-45deg) translateY(-.7em);
+        transform: translateY(-.6em) rotate(-45deg);
+    }
+}
+
+@keyframes close-top {
+    0% {
+        transform: translateY(.7em) rotate(45deg);
+    }
+
+    50% {
+        transform: translateY(.7em);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0);
+    }
+}
+
+@keyframes close-bot {
+    0% {
+        transform: translateY(-.6em) rotate(-45deg);
+    }
+
+    50% {
+        transform: translateY(-.6em);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0);
     }
 }
 

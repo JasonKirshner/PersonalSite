@@ -3,6 +3,7 @@ history.scrollRestoration = "manual"
 // FLAGS
 var drawn = false
 var projectsRevealed = false
+var reverse
 
 // Global Vars
 var arrowTarget = '#foot'
@@ -16,6 +17,22 @@ $(document).ready(() => {
         max: 1.5,
         speed: 1000,
         scale: 1.01
+    })
+
+    new LazyLoad({
+        elements_selector: ".project-video"
+    })
+
+    new LazyLoad({
+        elements_selector: ".tech-img"
+    })
+
+    new LazyLoad({
+        elements_selector: ".icon-img"
+    })
+
+    new LazyLoad({
+        elements_selector: ".ref-img"
     })
 
     typeTitle()
@@ -33,9 +50,17 @@ $(document).ready(() => {
         navShadow(pos)
     })
 
+    $('#view').click(() => {
+        $('html, body').animate({
+            scrollTop: ($('#pj1').offset().top - 40)
+        }, 10)
+    })
+
     navButtons()
 
     mobileMenu()
+
+    mobileNavButtons()
 })
 
 /* Dropdown Navbar Once Projects Fully In View */
@@ -53,12 +78,12 @@ var revealNav = () => {
 var revealProjects = (pos) => {
     if (!projectsRevealed) {
         if (pos >= $('#pj1').position().top - 200) {
-            $('#pj1 .project-container').fadeIn(500)
+            //$('#pj1 .project-container').show()
             $('#pj1 .project-title-line').addClass('widen')
         }
 
-        if (pos >= $('#pj2').position().top - 200) {
-            $('#pj2 .project-container').fadeIn(500)
+        if (pos >= $('#pj2').position().top - 300) {
+            //$('#pj2 .project-container').show()
             $('#pj2 .project-title-line').addClass('widen')
             projectsRevealed = true
         }
@@ -126,19 +151,19 @@ var arrow = (pos) => {
     }
 }
 
-var navButtons = (pos) => {
+var navButtons = () => {
     $('.logo').click(() => {
         location.reload()
     })
     $('.nav-links a:eq(0)').click(() => {
         $('html, body').animate({
-            scrollTop: ($('#pj1').offset().top)
+            scrollTop: ($('#pj1').offset().top - 40)
         }, 10)
     })
 
     $('.nav-links a:eq(1)').click(() => {
         $('html, body').animate({
-            scrollTop: ($('#pj2').offset().top)
+            scrollTop: ($('#pj2').offset().top - 40)
         }, 10)
     })
 
@@ -152,6 +177,40 @@ var navButtons = (pos) => {
         $('html, body').animate({
             scrollTop: tgt
         }, 10)
+    })
+}
+
+var mobileNavButtons = () => {
+    $('.nav-links-mobile a:first-child').click(() => {
+        $('html, body').animate({
+            scrollTop: 0
+        }, 10)
+        mobileMenuDisplay('hide')
+        closeBurger()
+    })
+
+    $('.nav-links-mobile a:eq(1)').click(() => {
+        $('html, body').animate({
+            scrollTop: ($('#pj1').offset().top - 40)
+        }, 10)
+        mobileMenuDisplay('hide')
+        closeBurger()
+    })
+
+    $('.nav-links-mobile a:eq(2)').click(() => {
+        $('html, body').animate({
+            scrollTop: ($('#pj2').offset().top - 40)
+        }, 10)
+        mobileMenuDisplay('hide')
+        closeBurger()
+    })
+
+    $('.nav-links-mobile a:last-child').click(() => {
+        $('html, body').animate({
+            scrollTop: $(arrowTarget).offset().top
+        }, 10)
+        mobileMenuDisplay('hide')
+        closeBurger()
     })
 }
 
@@ -196,5 +255,51 @@ var navShadow = (pos) => {
 }
 
 var mobileMenu = () => {
-    $('.mobil-nav-menu').click()
+    $('.mobile-nav-menu').click(() => {
+        if (!$('#top').hasClass('open-top') && !$('#top').hasClass('close-top')) {
+            $('#top').addClass('open-top')
+            $('#bot').addClass('open-bot')
+            reverse = true
+            mobileMenuDisplay('show')
+            setTimeout(() => {
+                $('#mid').css('opacity', 0)
+            }, 300)
+        } else if (reverse) {
+            closeBurger()
+        } else {
+            $('#top').removeClass('close-top').addClass('open-top')
+            $('#bot').removeClass('close-bot').addClass('open-bot')
+            reverse = true
+            mobileMenuDisplay('show')
+            setTimeout(() => {
+                $('#mid').css('opacity', 0)
+            }, 300)
+        }
+    })
+}
+
+var mobileMenuDisplay = (val) => {
+    if (val == 'show')
+        $('.nav-links-mobile').css('display', 'flex').animate({
+            height: '100vh'
+        }, 500, () => {
+            $('body').css('overflow', 'hidden')
+        })
+    else
+        $('.nav-links-mobile').animate({
+            height: 0,
+        }, 500, () => {
+            $('.nav-links-mobile').css('display', 'none')
+            $('body').css('overflow', 'visible')
+        })
+}
+
+var closeBurger = () => {
+    $('#top').removeClass('open-top').addClass('close-top')
+    $('#bot').removeClass('open-bot').addClass('close-bot')
+    reverse = false
+    mobileMenuDisplay('hide')
+    setTimeout(() => {
+        $('#mid').css('opacity', 1)
+    }, 300)
 }
