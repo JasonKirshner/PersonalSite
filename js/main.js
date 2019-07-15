@@ -9,6 +9,17 @@ var arrowTarget = '#foot'
 
 /* Function Called Once Page is Loaded */
 $(document).ready(() => {
+    drawLogo()
+
+    setTimeout(() => {
+        $('.site-load').hide()
+        $('.site').fadeIn(500)
+        revealSite()
+    }, 1500)
+})
+
+/* Called To Teveal Site Functionality */
+var revealSite = () => {
     new LazyLoad({
         elements_selector: ".project-video"
     })
@@ -51,14 +62,6 @@ $(document).ready(() => {
     mobileMenu()
 
     mobileNavButtons()
-})
-
-/* Dropdown Navbar Once Projects Fully In View */
-var revealNav = () => {
-    $('.navbar').addClass('drop')
-
-    // Draw The Logo SVG
-    drawLogo()
 }
 
 /* Add Title Divider On Scroll and Fade In */
@@ -82,7 +85,7 @@ var drawLogo = () => {
 
     setTimeout(() => {
         $('#k').addClass('draw-letter')
-    }, 1000)
+    }, 500)
 }
 
 var typeTitle = () => {
@@ -90,21 +93,23 @@ var typeTitle = () => {
         strings: ["Jason Kirshner"],
         startDelay: 500,
         typeSpeed: 20,
-        onStart: () => {
-            $('.typed-cursor:eq(0)').show()
-        },
+        showCursor: false,
+        // onStart: () => {
+        //     $('.typed-cursor:eq(0)').show()
+        // },
         onComplete: () => {
             $('.typed-cursor:eq(0)').hide()
             new Typed('.intro-title h1', {
                 strings: ["Full Stack Developer"],
                 typeSpeed: 15,
                 startDelay: 200,
+                showCursor: false,
                 onComplete: () => {
                     $('#view').css({
                         bottom: 0,
                         opacity: 1
                     })
-                    revealNav()
+                    $('.navbar').addClass('drop')
                 }
             })
         }

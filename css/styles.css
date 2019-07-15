@@ -24,6 +24,37 @@ a:hover {
     text-decoration: none;
 }
 
+#j,
+#k {
+    stroke: black;
+    fill: none;
+    stroke-width: 10;
+    stroke-dashoffset: 3000;
+    stroke-dasharray: 3000;
+}
+
+.draw-letter {
+    animation: draw-letter 1s linear forwards;
+}
+
+#site-load {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#site-load svg {
+    width: 35vw;
+    height: 35vh;
+}
+
+.site {
+    display: none;
+}
+
 .navbar {
     top: -4em;
     height: 4em;
@@ -54,22 +85,9 @@ a:hover {
     cursor: pointer;
 }
 
-.logo svg {
-    padding: 0 2em;
+.logo img {
     height: 100%;
-}
-
-#j,
-#k {
-    stroke: black;
-    fill: none;
-    stroke-width: 10;
-    stroke-dashoffset: 3000;
-    stroke-dasharray: 3000;
-}
-
-.draw-letter {
-    animation: draw-letter 2s linear forwards .7s;
+    padding-left: 1em;
 }
 
 .nav-links {
@@ -215,7 +233,7 @@ header {
     cursor: pointer;
 }
 
-.typed-cursor {
+/* .typed-cursor {
     padding: .05em .5em;
     margin-left: .2em;
     margin-top: .2em;
@@ -225,7 +243,7 @@ header {
 .typed-cursor.typed-cursor--blink {
     -webkit-animation: typedjsBlink 1s infinite;
     animation: typedjsBlink 1s infinite;
-}
+} */
 
 .project {
     position: relative;
