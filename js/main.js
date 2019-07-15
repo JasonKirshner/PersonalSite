@@ -117,7 +117,7 @@ var typeTitle = () => {
 }
 
 var arrow = (pos) => {
-    if (pos >= $('#foot').position().top) {
+    if (pos >= $('#pj2').position().top) {
         $('.nav-links svg').css({
             transform: 'rotate(-180deg)'
         })
