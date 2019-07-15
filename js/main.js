@@ -12,7 +12,7 @@ $(document).ready(() => {
     drawLogo()
 
     setTimeout(() => {
-        $('.site-load').hide()
+        $('#site-load').fadeOut()
         $('.site').fadeIn(500)
         revealSite()
     }, 1500)
