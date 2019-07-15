@@ -1,7 +1,6 @@
 history.scrollRestoration = "manual"
 
 // FLAGS
-var drawn = false
 var projectsRevealed = false
 var reverse
 
@@ -10,15 +9,6 @@ var arrowTarget = '#foot'
 
 /* Function Called Once Page is Loaded */
 $(document).ready(() => {
-    // Fade In Page On Page Load
-    $("body").fadeIn(1000)
-
-    VanillaTilt.init(document.querySelectorAll(".project-video"), {
-        max: 1.5,
-        speed: 1000,
-        scale: 1.01
-    })
-
     new LazyLoad({
         elements_selector: ".project-video"
     })
@@ -68,10 +58,7 @@ var revealNav = () => {
     $('.navbar').addClass('drop')
 
     // Draw The Logo SVG
-    if (!drawn) {
-        drawLogo()
-        drawn = true
-    }
+    drawLogo()
 }
 
 /* Add Title Divider On Scroll and Fade In */
@@ -91,24 +78,11 @@ var revealProjects = (pos) => {
 }
 
 var drawLogo = () => {
-    anime({
-        targets: '#j',
-        strokeDashoffset: [anime.setDashoffset, 20],
-        easing: 'easeInOutSine',
-        duration: 1000,
-        delay: 500,
-        direction: 'alternate',
-        loop: false
-    })
-    anime({
-        targets: '#k',
-        strokeDashoffset: [anime.setDashoffset, 20],
-        easing: 'easeInOutSine',
-        duration: 1000,
-        delay: 1000,
-        direction: 'alternate',
-        loop: false
-    })
+    $('#j').addClass('draw-letter')
+
+    setTimeout(() => {
+        $('#k').addClass('draw-letter')
+    }, 1000)
 }
 
 var typeTitle = () => {
