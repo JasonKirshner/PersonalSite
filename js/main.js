@@ -94,9 +94,6 @@ var typeTitle = () => {
         startDelay: 500,
         typeSpeed: 20,
         showCursor: false,
-        // onStart: () => {
-        //     $('.typed-cursor:eq(0)').show()
-        // },
         onComplete: () => {
             $('.typed-cursor:eq(0)').hide()
             new Typed('.intro-title h1', {
@@ -109,6 +106,12 @@ var typeTitle = () => {
                         bottom: 0,
                         opacity: 1
                     })
+
+                    $('.header-refs').css({
+                        bottom: 0,
+                        opacity: 1
+                    })
+
                     $('.navbar').addClass('drop')
                 }
             })

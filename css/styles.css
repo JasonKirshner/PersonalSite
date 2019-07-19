@@ -190,7 +190,7 @@ header {
 }
 
 .intro-container {
-    min-height: 25vh;
+    min-height: 20vh;
     color: white;
 }
 
@@ -213,6 +213,26 @@ header {
     margin-bottom: .5em;
 }
 
+.header-refs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all .5s;
+    bottom: -5em;
+    position: relative;
+}
+
+.ref-img {
+    padding: .5em 1em;
+    margin: 2em 0;
+    width: 4em;
+    opacity: .8;
+    -webkit-transition: opacity .3s;
+    -o-transition: opacity .3s;
+    transition: opacity .3s;
+}
+
 #view {
     color: white;
     padding: .5em 0;
@@ -229,21 +249,8 @@ header {
     -o-transition: all .5s;
     transition: all .5s;
     opacity: 0;
-    margin-top: 2em;
     cursor: pointer;
 }
-
-/* .typed-cursor {
-    padding: .05em .5em;
-    margin-left: .2em;
-    margin-top: .2em;
-    background-color: white;
-}
-
-.typed-cursor.typed-cursor--blink {
-    -webkit-animation: typedjsBlink 1s infinite;
-    animation: typedjsBlink 1s infinite;
-} */
 
 .project {
     position: relative;
@@ -424,7 +431,7 @@ header {
 footer {
     top: 100vh;
     bottom: 0;
-    min-height: 40vh;
+    min-height: 20vh;
     min-width: 100vw;
     position: relative;
     background-color: rgb(47, 43, 43);
@@ -444,10 +451,8 @@ footer {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    min-height: 40vh;
 }
 
-.footer-refs,
 .footer-docs {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -486,14 +491,6 @@ footer {
     -ms-flex-pack: center;
     justify-content: center;
     color: white;
-}
-
-.ref-img {
-    width: 4em;
-    opacity: .8;
-    -webkit-transition: opacity .3s;
-    -o-transition: opacity .3s;
-    transition: opacity .3s;
 }
 
 @media only screen and (min-width: 986px) {
