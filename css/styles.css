@@ -230,7 +230,7 @@ header {
 .ref-img {
     padding: .5em 1em;
     margin: 2em 0;
-    width: 4em;
+    width: 3em;
     opacity: .8;
     -webkit-transition: opacity .3s;
     -o-transition: opacity .3s;
@@ -243,6 +243,7 @@ header {
     border: .1em solid white;
     border-radius: 3em;
     font-size: 16pt;
+    margin-top: 2em;
     -webkit-transition: all .6s;
     -o-transition: all .6s;
     transition: all .6s;

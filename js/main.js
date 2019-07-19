@@ -120,7 +120,7 @@ var typeTitle = () => {
 }
 
 var arrow = (pos) => {
-    if (pos >= $('#pj2').position().top) {
+    if ($(window).scrollTop() + $(window).height() == $(document).height()) {
         $('.nav-links svg').css({
             transform: 'rotate(-180deg)'
         })
@@ -197,9 +197,8 @@ var mobileNavButtons = () => {
 }
 
 var navPosHighlight = (pos) => {
-    let pj1Pos = $('#pj1').position().top
-    let pj2Pos = $('#pj2').position().top
-    let footerPos = $('#foot').position().top
+    let pj1Pos = $('#pj1').position().top - 50
+    let pj2Pos = $('#pj2').position().top - 50
 
     if (pos >= pj1Pos && pos < pj2Pos)
         $('.nav-links a:eq(0)').css({
@@ -210,7 +209,7 @@ var navPosHighlight = (pos) => {
             borderBottomColor: ''
         })
 
-    if (pos >= pj2Pos && pos < footerPos)
+    if (pos >= pj2Pos && !($(window).scrollTop() + $(window).height() == $(document).height()))
         $('.nav-links a:eq(1)').css({
             borderBottomColor: 'black'
         })
@@ -219,7 +218,7 @@ var navPosHighlight = (pos) => {
             borderBottomColor: ''
         })
 
-    if (pos >= footerPos)
+    if ($(window).scrollTop() + $(window).height() == $(document).height())
         $('.nav-links a:last-child').css({
             borderBottomColor: 'black'
         })
