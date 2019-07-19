@@ -190,8 +190,12 @@ header {
 }
 
 .intro-container {
-    min-height: 20vh;
+    min-height: 30vh;
     color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .intro-name,
@@ -235,10 +239,9 @@ header {
 
 #view {
     color: white;
-    padding: .5em 0;
+    padding: .5em 3em;
     border: .1em solid white;
     border-radius: 3em;
-    width: 12em;
     font-size: 16pt;
     -webkit-transition: all .6s;
     -o-transition: all .6s;
