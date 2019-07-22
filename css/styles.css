@@ -257,11 +257,6 @@ header {
 .ref-img {
     padding: .5em 1em;
     margin: 2em 0;
-    width: 3em;
-    opacity: .8;
-    -webkit-transition: opacity .3s;
-    -o-transition: opacity .3s;
-    transition: opacity .3s;
 }
 
 #view {
@@ -355,7 +350,8 @@ header {
     margin: 3em 0;
 }
 
-.icon-img {
+.icon-img,
+.ref-img {
     margin: 0 1em;
     width: 3rem;
     -webkit-transform: scale(1);
