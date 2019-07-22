@@ -530,7 +530,8 @@ footer {
         width: 20%;
     }
 
-    .icon-img:hover {
+    .icon-img:hover,
+    .ref-img {
         -webkit-transform: scale(1.2);
         -ms-transform: scale(1.2);
         transform: scale(1.2);
@@ -539,10 +540,6 @@ footer {
     .footer-docs a:hover {
         color: black;
         background-color: white;
-    }
-
-    .ref-img:hover {
-        opacity: 1;
     }
 }
 
