@@ -252,11 +252,12 @@ header {
     transition: all .5s;
     bottom: -5em;
     position: relative;
+    margin: 2em 0;
 }
 
 .ref-img {
-    padding: .5em 1em;
-    margin: 2em 0 !important;
+    padding: .5em;
+    margin: 0 1em !important;
 }
 
 #view {
@@ -531,7 +532,7 @@ footer {
     }
 
     .icon-img:hover,
-    .ref-img {
+    .ref-img:hover {
         -webkit-transform: scale(1.2);
         -ms-transform: scale(1.2);
         transform: scale(1.2);
