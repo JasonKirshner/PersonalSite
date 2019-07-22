@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
 
 * {
     margin: 0;
@@ -70,7 +71,14 @@ a:hover {
     z-index: 2;
     position: fixed;
     width: 100vw;
-    background-color: white;
+}
+
+#canvas-basic {
+    top: -4em;
+    width: 100vw;
+    height: 4em;
+    z-index: 2;
+    position: fixed;
 }
 
 .drop {
@@ -87,14 +95,17 @@ a:hover {
 }
 
 .logo {
+    font-family: 'Pacifico', cursive;
+    font-size: 28pt;
     width: 20vw;
     height: 100%;
+    padding-left: 1em;
     cursor: pointer;
+    justify-content: flex-start;
 }
 
 .logo img {
     height: 100%;
-    padding-left: 1em;
 }
 
 .nav-links {
@@ -113,6 +124,7 @@ a:hover {
 
 .nav-links a {
     color: black;
+    font-weight: 1000;
     padding: 1em 5% 0;
     border-bottom: .2em solid;
     border-bottom-color: transparent;
@@ -172,10 +184,6 @@ header {
 }
 
 .intro-wrapper {
-    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2))), url('../media/img/intro-bg.png') center center;
-    background: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../media/img/intro-bg.png') center center;
-    background: -o-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../media/img/intro-bg.png') center center;
-    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.3)), to(rgba(0, 0, 0, 0.3))), url('../media/img/intro-bg.png') center center;
     background: -webkit-linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../media/img/intro-bg.png') center center;
     background: -o-linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../media/img/intro-bg.png') center center;
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../media/img/intro-bg.png') center center;
@@ -231,9 +239,6 @@ header {
     border: .1em solid white;
     border-radius: 3em;
     font-size: 16pt;
-    -webkit-transition: all .6s;
-    -o-transition: all .6s;
-    transition: all .6s;
     position: relative;
     bottom: -5em;
     -webkit-transition: all .5s;
@@ -253,17 +258,9 @@ header {
     padding: 10vh 3em 0;
 }
 
-.project#pj1 .parallax-img {
-    right: 7%;
-    width: 40%;
-}
-
-.project#pj2 .parallax-img {
-    width: 20%;
-}
-
-.project#pj2 .parallax-img:nth-child(2) {
-    left: 27%;
+.project-container {
+    margin-bottom: 2em;
+    display: none;
 }
 
 .project-content {
@@ -333,8 +330,8 @@ header {
     position: relative;
     width: 45%;
     height: 45%;
-    -webkit-box-shadow: 0 0 2em .1em rgba(0, 0, 0, 0.2);
-    box-shadow: 0 0 2em .1em rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 0 1em 0.6em rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 1em 0.6em rgba(0, 0, 0, 0.2);
     margin-right: 6em;
 }
 

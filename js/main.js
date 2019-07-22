@@ -20,6 +20,22 @@ $(document).ready(() => {
 
 /* Called To Teveal Site Functionality */
 var revealSite = () => {
+    new Granim({
+        element: '#canvas-basic',
+        direction: 'diagonal',
+        states: {
+            "default-state": {
+                gradients: [
+                    ['#EB3349', '#F45C43'],
+                    ['#24C6DC', '#514A9D'],
+                    ['#FF512F', '#DD2476'],
+                    ['#FF8008', '#FFC837']
+                ],
+                transitionSpeed: 4000
+            }
+        }
+    })
+
     new LazyLoad({
         elements_selector: ".project-video"
     })
@@ -42,7 +58,8 @@ var revealSite = () => {
     $(window).scroll(() => {
         let pos = $(window).scrollTop()
 
-        revealProjects(pos)
+        if (!projectsRevealed)
+            revealProjects(pos)
 
         navPosHighlight(pos)
 
@@ -66,17 +83,17 @@ var revealSite = () => {
 
 /* Add Title Divider On Scroll and Fade In */
 var revealProjects = (pos) => {
-    if (!projectsRevealed) {
-        if (pos >= $('#pj1').position().top - 200) {
-            //$('#pj1 .project-container').show()
+    if (pos >= $('#pj1').position().top - 200) {
+        $('#pj1 .project-container').fadeIn(() => {
             $('#pj1 .project-title-line').addClass('widen')
-        }
+        })
+    }
 
-        if (pos >= $('#pj2').position().top - 300) {
-            //$('#pj2 .project-container').show()
+    if (pos >= $('#pj2').position().top - 300) {
+        $('#pj2 .project-container').fadeIn(() => {
             $('#pj2 .project-title-line').addClass('widen')
-            projectsRevealed = true
-        }
+        })
+        projectsRevealed = true
     }
 }
 
@@ -113,6 +130,7 @@ var typeTitle = () => {
                     })
 
                     $('.navbar').addClass('drop')
+                    $('#canvas-basic').addClass('drop')
                 }
             })
         }
