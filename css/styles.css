@@ -256,7 +256,7 @@ header {
 
 .ref-img {
     padding: .5em 1em;
-    margin: 2em 0;
+    margin: 2em 0 !important;
 }
 
 #view {
