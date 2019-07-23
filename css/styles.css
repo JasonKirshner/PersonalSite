@@ -99,7 +99,7 @@ a:hover {
     font-size: 28pt;
     width: 20vw;
     height: 100%;
-    padding-left: 1em;
+    padding-left: .5em;
     cursor: pointer;
     justify-content: flex-start;
 }
@@ -184,10 +184,6 @@ header {
 }
 
 .intro-wrapper {
-    background: -webkit-linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../media/img/intro-bg.png') center center;
-    background: -o-linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../media/img/intro-bg.png') center center;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../media/img/intro-bg.png') center center;
-    background-size: cover;
     min-height: 100vh;
     width: 100%;
     position: relative;
@@ -202,6 +198,17 @@ header {
     -ms-flex-direction: column;
     flex-direction: column;
     text-align: center;
+}
+
+#bg {
+    min-height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: -2;
+    background: -webkit-linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../media/img/intro-bg.png') center center;
+    background: -o-linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../media/img/intro-bg.png') center center;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../media/img/intro-bg.png') center center;
+    background-size: cover;
 }
 
 .intro-container {

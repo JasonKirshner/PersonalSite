@@ -20,18 +20,26 @@ $(document).ready(() => {
 
 /* Called To Teveal Site Functionality */
 var revealSite = () => {
+
+    Particles.init({
+        selector: '#bg',
+        maxParticles: 180,
+        color: "#ffffff"
+    })
+
     new Granim({
         element: '#canvas-basic',
         direction: 'diagonal',
         states: {
             "default-state": {
                 gradients: [
-                    ['#EB3349', '#F45C43'],
-                    ['#24C6DC', '#514A9D'],
-                    ['#FF512F', '#DD2476'],
-                    ['#FF8008', '#FFC837']
+                    ['#F1632A', '#F0C419'],
+                    ['#759F28', '#2D77D7'],
+                    ['#C853A5', '#F1712A'],
+                    ['#F0C419', '#4EBA6F'],
+                    ['#2D95BF', '#955BA5']
                 ],
-                transitionSpeed: 4000
+                transitionSpeed: 5000
             }
         }
     })
