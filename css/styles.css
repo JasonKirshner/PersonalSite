@@ -125,7 +125,7 @@ a:hover {
 .nav-links span {
     color: black;
     font-weight: 1000;
-    padding: 1em 5% 0;
+    padding: 1em 3em 0;
     border-bottom: .2em solid;
     border-bottom-color: transparent;
     -webkit-transition: border-bottom-color .4s;
