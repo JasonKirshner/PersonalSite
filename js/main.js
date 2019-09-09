@@ -163,19 +163,19 @@ var navButtons = () => {
     $('.logo').click(() => {
         location.reload()
     })
-    $('.nav-links a:eq(0)').click(() => {
+    $('.nav-links span:eq(0)').click(() => {
         $('html, body').animate({
             scrollTop: ($('#pj1').offset().top - 40)
         }, 10)
     })
 
-    $('.nav-links a:eq(1)').click(() => {
+    $('.nav-links span:eq(1)').click(() => {
         $('html, body').animate({
             scrollTop: ($('#pj2').offset().top - 40)
         }, 10)
     })
 
-    $('.nav-links a:last-child').click(() => {
+    $('.nav-links span:last-child').click(() => {
         let tgt
         if (arrowTarget === '#foot')
             tgt = $(arrowTarget).offset().top
